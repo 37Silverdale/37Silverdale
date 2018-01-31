@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ./Applications/37Silverdale
+cd ./Documents/zhaonisuanzhang;
 git pull
 python3 suanzhang.py;
 git add .
