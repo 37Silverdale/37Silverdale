@@ -5,4 +5,3 @@ python windows.py
 git add .
 git commit -m "ning"
 git push
-pause
