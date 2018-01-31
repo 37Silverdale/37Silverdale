@@ -1,8 +1,8 @@
 title ’“ƒ„À„’À
 echo hello
 git pull
-python suanzhang.py
+python windows.py
 git add .
-git commit
+git commit -m "ning"
 git push
 pause
