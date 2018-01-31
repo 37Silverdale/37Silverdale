@@ -27,7 +27,7 @@ debts = [ning_debt, peng_debt, zhao_debt, cai_debt]
 
 # Record the performance history
 
-history = open("history.dat", "a")
+history = open("history.dat", "a", encoding='utf-8')
 
 history.write(time.asctime(time.localtime(time.time())))
 history.write('\n')
