@@ -65,7 +65,7 @@ def add(d = debts, h = history):
             continue
 
         try:
-            total_amount_str = input('\n( ´͈ ᵕ `͈ )◞♡--- 付了多少钱？\n现在已经支持加法输入。若想做减法，请输入“+-”也就是加负数\n━Σ(ﾟДﾟ|||)━---- ')
+            total_amount_str = input('\n付了多少钱？\n现在已经支持加法输入。若想做减法，请输入“+-”也就是加负数\n')
             amount_list_str = total_amount_str.split('+')
             amount_list = [float(i) for i in amount_list_str]
             amount = sum(amount_list)
