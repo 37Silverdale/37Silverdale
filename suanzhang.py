@@ -49,7 +49,7 @@ def add(d = debts, h = history):
             print('Σ( ⚆൧⚆)---- 你不要乱输入，帅哥！\n')
             continue
 
-        print('\n๐·°(৹˃̵﹏˂̵৹)°·๐-- 替谁付的钱？\n（若是多个人则用英文逗号分隔，比如 1,2,3,4 意思是所有人）\n\n', options)
+        print('\n๐·°(৹˃̵﹏˂̵৹)°·๐-- 替谁付的钱？\n（若是多个人则用英文逗号分隔）\n\n', '0.所有人', options)
         payee = input('\nー( ´ ▽ ` )ﾉ---- ')
         if payee.find('，') != -1:
             print('( •o•) ---- 请用英文逗号，帅哥！\n')
@@ -57,13 +57,18 @@ def add(d = debts, h = history):
 
         string_list = payee.split(',')
         try:
-            int_set = {int(i) for i in string_list if int(i) >= 1 and int(i) <=4}
+            int_set = {int(i) for i in string_list if int(i) >= 0 and int(i) <=4}
+            if 0 in int_set:
+            	int_set = {1, 2, 3, 4}
         except ValueError:
             print('₍₍ ◟꒰ ‾᷅д̈ ‾᷄ ╬꒱-- 你不要乱输入，帅哥！\n')
             continue
 
         try:
-            amount = float(input('\n( ´͈ ᵕ `͈ )◞♡--- 付了多少钱？\n\n━Σ(ﾟДﾟ|||)━---- '))
+            total_amount_str = input('\n( ´͈ ᵕ `͈ )◞♡--- 付了多少钱？\n现在已经支持加法输入。若想做减法，请输入“+-”也就是加负数\n━Σ(ﾟДﾟ|||)━---- ')
+            amount_list_str = total_amount_str.split('+')
+            amount_list = [float(i) for i in amount_list_str]
+            amount = sum(amount_list)
         except ValueError:
             print('o(〃▽〃)o-- 你不要乱输入，帅哥！\n')
             continue
