@@ -103,6 +103,11 @@ def calculate(d = debts, h = history):
             print('ฅ^•ﻌ•^ฅ----{} {}'.format(name, money))
         print('~(  ~³ω³ )~☍-------------- Pounds\n')
 
+        spend = 0.
+        for p in d:
+        	spend += p[header[richman-1]]
+        print('从上次清帐到现在你的总开销是', spend, '镑。\n')
+
         h.write(names[richman-1])
         h.write('查帐\n')
         continue
