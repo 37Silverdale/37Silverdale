@@ -141,6 +141,13 @@ for row in debt_reader:
 
 readFile.close()
 
+# Read history
+
+def readHistory():
+    historyFile = open("history.dat", "r", encoding='utf-8')
+    historyReader = historyFile.read()
+    print(historyReader)
+    historyFile.close()
 
 # Run the system 
 
@@ -148,14 +155,14 @@ while True:
     print('\n\n')
     print(' 欢迎来到“找你算账”系统\n')
     print('你想干什么？\n')
-    print(' 1.记账\n 2.查账\n 70.清零\n0.保存并退出')
+    print(' 1.记账\n 2.查账\n 3.查看历史记录\n 70.清零\n 0.保存并退出')
     print('\n\n')
     try:
         alt = int(input())
     except ValueError:
         print('你不要乱输入，帅哥！\n')
         continue
-    if alt != 1 and alt != 2 and alt != 0 and alt != 70:
+    if alt != 1 and alt != 2 and alt != 0 and alt != 70 and alt != 3:
         print('你不要乱输入，帅哥！\n')
         continue
 
@@ -163,6 +170,8 @@ while True:
         add()
     elif alt == 2:
         calculate()
+    elif alt == 3:
+        readHistory()
     elif alt == 70:
         clear()
     else:
