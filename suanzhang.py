@@ -29,7 +29,7 @@ debts = [ning_debt, peng_debt, zhao_debt, cai_debt]
 
 history = open("history.dat", "a", encoding='utf-8')
 
-history.write(time.asctime(time.localtime(time.time())))
+history.write(time.asctime(time.gmtime(time.time())))
 history.write('\n')
 
 # Function for adding record
