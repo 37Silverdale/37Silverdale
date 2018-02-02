@@ -1,7 +1,7 @@
 ﻿# -*- coding: utf-8 -*-
 # 找你算账
 # 中国娱乐圈驻伦敦办事处
-# Version 3.1
+# Version 3.2
 # Copyright © 2018 蔡春瑜. All rights reserved.
 
 import csv
@@ -36,23 +36,23 @@ history.write('\n')
 
 def add(d = debts, h = history):
     while True:
-        print('\n这次是谁付的钱？\n', options, back)
+        print('\n 这次是谁付的钱？\n', options, back)
         payer = input('')
         try:
             name_index = int(payer)
         except ValueError:
-            print('你不要乱输入，帅哥！\n')
+            print(' 你不要乱输入，帅哥！\n')
             continue
         if name_index == 0:
             break
         if name_index < 0 or name_index > 4:
-            print('你不要乱输入，帅哥！\n')
+            print(' 你不要乱输入，帅哥！\n')
             continue
 
-        print('\n替谁付的钱？\n（若是多个人则用英文逗号分隔）\n\n', '0.所有人', options)
+        print('\n 替谁付的钱？\n（若是多个人则用英文逗号分隔）\n\n', '0.所有人', options)
         payee = input()
         if payee.find('，') != -1:
-            print('请用英文逗号，帅哥！\n')
+            print(' 请用英文逗号，帅哥！\n')
             continue
 
         string_list = payee.split(',')
@@ -61,16 +61,16 @@ def add(d = debts, h = history):
             if 0 in int_set:
                 int_set = {1, 2, 3, 4}
         except ValueError:
-            print('你不要乱输入，帅哥！\n')
+            print(' 你不要乱输入，帅哥！\n')
             continue
 
         try:
-            total_amount_str = input('\n付了多少钱？\n现在已经支持加法输入。若想做减法，请输入“+-”也就是加负数\n')
+            total_amount_str = input('\n 付了多少钱？\n现在已经支持加法输入。若想做减法，请输入“+-”也就是加负数\n')
             amount_list_str = total_amount_str.split('+')
             amount_list = [float(i) for i in amount_list_str]
             amount = sum(amount_list)
         except ValueError:
-            print('你不要乱输入，帅哥！\n')
+            print(' 你不要乱输入，帅哥！\n')
             continue
 
         average = amount/len(int_set)
@@ -84,29 +84,29 @@ def add(d = debts, h = history):
 
 def calculate(d = debts, h = history):
     while True:
-        print('你是谁？\n', options, back)
+        print(' 你是谁？\n', options, back)
         try:
             richman = int(input())
         except ValueError:
-            print('你不要乱输入，帅哥！\n')
+            print(' 你不要乱输入，帅哥！\n')
             continue
         if richman == 0:
             break
 
         cal = {'宁采臣':0.,'彭于晏':0.,'赵又廷':0.,'蔡康永':0.}
-        print('你分别欠')
+        print(' 你分别欠')
         j = 0
         for c in cal.keys():
             cal[c] = debts[j][header[richman-1]] - debts[richman-1][header[j]]
             j += 1
         for name, money in cal.items():
-            print('{}{}'.format(name, money))
+            print(' {}{}'.format(name, money))
         print(' Pounds\n')
 
         spend = 0.
         for p in d:
             spend += p[header[richman-1]]
-        print('从上次清帐到现在你的总开销是', spend, '镑。\n')
+        print(' 从上次清帐到现在你的总开销是', spend, '镑。\n')
 
         h.write(names[richman-1])
         h.write('查帐\n')
@@ -115,15 +115,15 @@ def calculate(d = debts, h = history):
 # Function to reset record
 
 def clear(d = debts, h = history):
-    y = input('你确定要清零吗？(y/n) ---- ')
+    y = input(' 你确定要清零吗？(y/n) ---- ')
     if y != 'y':
-        print('那就不清零了～')
+        print(' 那就不清零了～')
         h.write('取消清零\n')
         return
 
     for i in range(0,4):
         d[i] = d[i].fromkeys(d[i],0.)
-    print('\n清零成功！')
+    print('\n 清零成功！')
     h.write('成功清零\n')
 
 
@@ -153,17 +153,17 @@ def readHistory():
 
 while True:
     print('\n\n')
-    print(' 欢迎来到“找你算账”系统\n')
-    print('你想干什么？\n')
+    print(' 欢迎来到“找你算账”系统(v3.2)\n')
+    print(' 你想干什么？\n')
     print(' 1.记账\n 2.查账\n 3.查看历史记录\n 70.清零\n 0.保存并退出')
     print('\n\n')
     try:
         alt = int(input())
     except ValueError:
-        print('你不要乱输入，帅哥！\n')
+        print(' 你不要乱输入，帅哥！\n')
         continue
     if alt != 1 and alt != 2 and alt != 0 and alt != 70 and alt != 3:
-        print('你不要乱输入，帅哥！\n')
+        print(' 你不要乱输入，帅哥！\n')
         continue
 
     if alt == 1:
